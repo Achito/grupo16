@@ -75,13 +75,14 @@
       </div>
     </div>
     </a>
-
+	<a href="FormacionAcademicaServlet">
     <div class="col-sm-4"> 
       <div class="panel panel-primary">
         <div class="panel-heading text-center">Formación académica recibida</div>
         <div class="panel-body"><img src="pics\img2.png" class="img-responsive" style="width:100%" alt="Image"></div>
       </div>
     </div>
+    </a>
     <div class="col-sm-4"> 
       <div class="panel panel-primary">
         <div class="panel-heading text-center">Actividad docente</div>

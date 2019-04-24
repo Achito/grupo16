@@ -25,8 +25,6 @@ public class SituacionProfesionalServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		
-		
 		Integer investigadorId = (Integer) req.getSession().getAttribute("investigadorId");
 
 		Investigador investigador = InvestigadorDAOImplementation.getInstance().read(investigadorId);

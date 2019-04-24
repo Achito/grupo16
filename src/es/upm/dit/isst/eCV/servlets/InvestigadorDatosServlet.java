@@ -95,7 +95,7 @@ public class InvestigadorDatosServlet extends HttpServlet{
 			};
 			
 			if(req.getParameter("password1") != null && !req.getParameter("password1").equals("") && req.getParameter("password2") != null && 
-					req.getParameter("password1").equals(req.getParameter("password2"))) {
+		req.getParameter("password1").equals(req.getParameter("password2"))) {
 				
 				String password = new Sha256Hash(req.getParameter("password1")).toString();
 
