@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Formacion Academica</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -47,7 +47,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Principal</a>
+      <a class="navbar-brand" href="InvestigadorServlet">Principal</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -56,7 +56,8 @@
         <li><a href="#">Descargar CVN</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Tu datos</a></li>
+        <li><a href="InvestigadorDatosServlet"><span class="glyphicon glyphicon-user"></span> ${investigador.name }</a></li>
+        <li><a href="LogoutServlet"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
       </ul>
     </div>
   </div>
@@ -64,37 +65,66 @@
 
 <div class="container justify-content-center">
 
-        <div class="container text-left">
-                <h3>Estudios de 1º y 2º ciclo, y antiguos ciclos (Licenciados, Diplomados, Ingenieros Superiores, Ingenieros Técnicos, Arquitectos)</h3>
-            </div>
 
-            <table class="table">
-                    <thead>
-                      <tr class="bg-primary">
-                        <th scope="col">Nombre del título</th>
-                        <th scope="col">Entidad de titulación</th>
-                        <th scope="col">Fecha de titulación</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td scope="row">No posee ningún título almacenado en el sistema.</td>
-                      </tr>
-                    </tbody>
-                  </table>
+           <h1>Estudios de 1º y 2º ciclo, y antiguos ciclos (Licenciados, Diplomados, Ingenieros Superiores, Ingenieros Técnicos, Arquitectos)</h1> 
+    <table class="table">
+      <thead>
+        <tr class="bg-primary">
+          <th scope="col">Nombre del título</th>
+          <th scope="col">Entidad de titulación</th>
+          <th scope="col">Fecha de titulación</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+      <c:if test="${fn:length(titulosAcademicos) < 1}">
+      	<tr>
+      	<td>
+      	No hay ningun título académico añadido.
+      	</td>
+      	</tr>
+      </c:if>
+        
+      <c:forEach items="${titulosAcademicos}" var="ta">
+				<tr>
+				<td>${ta.nombreTitulo }</td>
+				<td>${ta.entidadTitulacion }</td>
+				<td>${ta.fechaTitulacion }</td>
+				
+				
+				<td>
+				<a href="/eCV/TituloAcademicoServlet?edit=${ta.id}"   >
+				<button type="submit" class="glyphicon glyphicon-edit"></button>
+				</a>
+				
+				</td>
+				
+				<td>
+				<form action="TituloAcademicoServlet" method="POST"  >
+				<button type="submit" name="delete" value="${ta.id}"class="glyphicon glyphicon-remove"></button>
+				</form>
+				
+				</td>
+				
+				</tr>
+			</c:forEach>
+      </tbody>
+    </table>
 
-                  <form>
+                  <form method="post" action="/eCV/TituloAcademicoServlet">
 
                         <div class="form-row">
 
                                 <div class="form-group col-md-8">
                                   <label for="inputName">Nombre del título</label>
-                                  <input type="email" class="form-control" id="inputName" placeholder="Nombre del título">
+                                  <input type="text" class="form-control" name="nombreTitulo" value="${taEdit.nombreTitulo }" id="inputName" placeholder="Nombre del título">
                                 </div>
 
                                 <div class="form-group col-md-4">
                                   <label for="inputDate">Fecha de titulación</label>
-                                  <input type="date" class="form-control" id="inputPassword4" placeholder="Contraseña nueva">
+                                  <input type="date" class="form-control" name="fechaTitulacion" value="${taEdit.fechaTitulacion }"placeholder="Contraseña nueva">
                                 </div>
 
                               </div>
@@ -103,7 +133,7 @@
 
                                     <div class="form-group col-md-2">
                                             <label for="inputType">Titulación universitaria</label>
-                                            <select id="inputType" class="form-control">
+                                            <select id="inputType" name="tipoTitulacion" class="form-control">
                                               <option></option>
                                               <option>Doctor</option>
                                               <option>Otros</option>
@@ -115,21 +145,28 @@
     
                                     <div class="form-group col-md-10">
                                       <label for="inputEntity">Entidad de titulación</label>
-                                      <input type="text" class="form-control" id="inputEntity" placeholder="">
+                                      <input type="text" class="form-control" name="entidadTitulacion" value="${taEdit.entidadTitulacion }"id="inputEntity" placeholder="">
                                     </div>
     
                                   </div>
 
                                   <div class="form-row">
 
-                                        <div class="form-group col-md-3">
-                                            <button type="submit" class="btn btn-primary ">Guardar</button>
-                                        </div>
+                                        <c:if test="${taEdit != null }">
+                                  <div class="col text-left">
+                                      <button type="submit" class="btn btn-primary ">Editar</button>
+                                  </div>
+                  					</c:if>
+                  					
+                  					<c:if test="${taEdit == null }">
+                                  <div class="col text-left">
+                                      <button type="submit" class="btn btn-primary ">Guardar</button>
+                                  </div>
+                  					</c:if>
                                         
                                       </div>
 
                   </form>
-
 
 </div>
 <hr>

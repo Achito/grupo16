@@ -75,7 +75,7 @@
       </div>
     </div>
     </a>
-	<a href="FormacionAcademicaServlet">
+	<a href="TituloAcademicoServlet">
     <div class="col-sm-4"> 
       <div class="panel panel-primary">
         <div class="panel-heading text-center">Formación académica recibida</div>

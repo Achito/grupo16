@@ -17,6 +17,9 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 
 
 @Entity
@@ -48,6 +51,15 @@ public class Investigador implements Serializable{
 	
 	@OneToMany(mappedBy = "investigador", fetch = FetchType.EAGER)
 	private List<SituacionProfesional> situacionesProfesionales;
+	
+	@OneToMany(mappedBy = "investigador", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<TituloAcademico> titulosAcademicos;
+	
+	@OneToMany(mappedBy = "investigador", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Doctorado> doctorados;
+	
 	
 	@Lob
 	private byte[] photo;
@@ -153,6 +165,13 @@ public class Investigador implements Serializable{
 	}
 	public void setSituacionesProfesionales(List<SituacionProfesional> situacionesProfesionales) {
 		this.situacionesProfesionales = situacionesProfesionales;
+	}
+	
+	public List<TituloAcademico> getTitulosAcademicos() {
+		return titulosAcademicos;
+	}
+	public void setTitulosAcademicos(List<TituloAcademico> titulosAcademicos) {
+		this.titulosAcademicos = titulosAcademicos;
 	}
 	
 }

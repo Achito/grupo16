@@ -16,5 +16,6 @@
 		<property name="hbm2ddl.auto">update</property>
 		<mapping class="es.upm.dit.isst.eCV.model.Investigador" />
 		<mapping class="es.upm.dit.isst.eCV.model.SituacionProfesional" />
+		<mapping class="es.upm.dit.isst.eCV.model.TituloAcademico" />
 	</session-factory>
 </hibernate-configuration>
