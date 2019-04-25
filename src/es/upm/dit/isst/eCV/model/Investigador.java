@@ -36,6 +36,7 @@ public class Investigador implements Serializable{
 	private String name;
 	private String address1;
 	private String address2;
+	
 	private String city;
 	private String provincia;
 	private Integer zip;
@@ -172,6 +173,12 @@ public class Investigador implements Serializable{
 	}
 	public void setTitulosAcademicos(List<TituloAcademico> titulosAcademicos) {
 		this.titulosAcademicos = titulosAcademicos;
+	}
+	public List<Doctorado> getDoctorados() {
+		return doctorados;
+	}
+	public void setDoctorados(List<Doctorado> doctorados) {
+		this.doctorados = doctorados;
 	}
 	
 }

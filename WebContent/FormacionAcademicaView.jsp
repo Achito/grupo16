@@ -119,12 +119,12 @@
 
                                 <div class="form-group col-md-8">
                                   <label for="inputName">Nombre del título</label>
-                                  <input type="text" class="form-control" name="nombreTitulo" value="${taEdit.nombreTitulo }" id="inputName" placeholder="Nombre del título">
+                                  <input type="text"  required="true" class="form-control" name="nombreTitulo" value="${taEdit.nombreTitulo }" id="inputName" placeholder="Nombre del título">
                                 </div>
 
                                 <div class="form-group col-md-4">
                                   <label for="inputDate">Fecha de titulación</label>
-                                  <input type="date" class="form-control" name="fechaTitulacion" value="${taEdit.fechaTitulacion }"placeholder="Contraseña nueva">
+                                  <input type="date" class="form-control" required="true" name="fechaTitulacion" value="${taEdit.fechaTitulacion }"placeholder="Contraseña nueva">
                                 </div>
 
                               </div>
@@ -145,7 +145,7 @@
     
                                     <div class="form-group col-md-10">
                                       <label for="inputEntity">Entidad de titulación</label>
-                                      <input type="text" class="form-control" name="entidadTitulacion" value="${taEdit.entidadTitulacion }"id="inputEntity" placeholder="">
+                                      <input type="text" class="form-control" required="true" name="entidadTitulacion" value="${taEdit.entidadTitulacion }" id="inputEntity" placeholder="">
                                     </div>
     
                                   </div>
@@ -183,27 +183,57 @@
                         <th scope="col">Programa de doctorado</th>
                         <th scope="col">Entidad de titulación</th>
                         <th scope="col">Fecha de titulación</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td scope="row">No posee ningún programa de doctorado almacenado en el sistema.</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                      <c:if test="${fn:length(doctorados) < 1}">
+      	<tr>
+      	<td>
+      	No hay ningun título académico añadido.
+      	</td>
+      	</tr>
+      </c:if>
+        
+      <c:forEach items="${doctorados}" var="doc">
+				<tr>
+				<td>${doc.programaDoctorado }</td>
+				<td>${doc.entidadTitulacion }</td>
+				<td>${doc.fechaTitulacion }</td>
+				
+				
+				<td>
+				<a href="/eCV/DoctoradoServlet?edit=${doc.id}"   >
+				<button type="submit" class="glyphicon glyphicon-edit"></button>
+				</a>
+				
+				</td>
+				
+				<td>
+				<form action="DoctoradoServlet" method="POST"  >
+				<button type="submit" name="delete" value="${doc.id}"class="glyphicon glyphicon-remove"></button>
+				</form>
+				
+				</td>
+				
+				</tr>
+			</c:forEach>
+      </tbody>
+    </table>
 
-                  <form>
+                  <form method="post" action="/eCV/DoctoradoServlet">
 
                         <div class="form-row">
 
                                 <div class="form-group col-md-8">
                                   <label for="inputDoc">Programa de doctorado</label>
-                                  <input type="email" class="form-control" id="inputDoc" placeholder="Nombre del título">
+                                  <input type="text" class="form-control"  required="true" id="inputDoc" name="programaDoctorado" value="${docEdit.programaDoctorado }" placeholder="Nombre del título">
                                 </div>
 
                                 <div class="form-group col-md-4">
                                   <label for="inputDate">Fecha de titulación</label>
-                                  <input type="date" class="form-control" id="inputPassword4" placeholder="Contraseña nueva">
+                                  <input type="date" class="form-control"  required="true" name="fechaTitulacion" value="${docEdit.fechaTitulacion }" id="inputPassword4" placeholder="Contraseña nueva">
                                 </div>
 
                               </div>
@@ -213,16 +243,24 @@
     
                                     <div class="form-group col-md-10">
                                       <label for="inputEntity">Entidad de titulación</label>
-                                      <input type="text" class="form-control" id="inputEntity" placeholder="">
+                                      <input type="text" class="form-control" required="true" name="entidadTitulacion" value="${docEdit.entidadTitulacion }"id="inputEntity" placeholder="">
                                     </div>
     
                                   </div>
 
                                   <div class="form-row">
 
-                                        <div class="form-group col-md-3">
-                                            <button type="submit" class="btn btn-primary ">Guardar</button>
-                                        </div>
+                                       <c:if test="${docEdit != null }">
+                                  <div class="col text-left">
+                                      <button type="submit" class="btn btn-primary ">Editar</button>
+                                  </div>
+                  					</c:if>
+                  					
+                  					<c:if test="${docEdit == null }">
+                                  <div class="col text-left">
+                                      <button type="submit" class="btn btn-primary ">Guardar</button>
+                                  </div>
+                  					</c:if>
                                         
                                       </div>
 

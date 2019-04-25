@@ -4,16 +4,15 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import es.upm.dit.isst.eCV.model.TituloAcademico;
+import es.upm.dit.isst.eCV.model.Doctorado;
 
-public class TituloAcademicoDAOImplementation implements TituloAcademicoDAO{
+public class DoctoradoDAOImplementation implements DoctoradoDAO {
 
-	
-	private static TituloAcademicoDAOImplementation instance = null;
-	private  TituloAcademicoDAOImplementation() {};
-	public static TituloAcademicoDAOImplementation getInstance() {
+	private static DoctoradoDAOImplementation instance = null;
+	private  DoctoradoDAOImplementation() {};
+	public static DoctoradoDAOImplementation getInstance() {
 		if(null == instance) {
-			instance = new TituloAcademicoDAOImplementation();
+			instance = new DoctoradoDAOImplementation();
 		}
 		return instance;
 	}
@@ -21,13 +20,13 @@ public class TituloAcademicoDAOImplementation implements TituloAcademicoDAO{
 	
 	
 	@Override
-	public void create(TituloAcademico tituloAcademico) {
+	public void create(Doctorado doctorado) {
 		
 		Session session = SessionFactoryService.get().openSession();
 		
 		try {
 			session.beginTransaction();
-			session.save(tituloAcademico);
+			session.save(doctorado);
 			session.getTransaction().commit();
 			
 		} catch(Exception e){
@@ -39,14 +38,14 @@ public class TituloAcademicoDAOImplementation implements TituloAcademicoDAO{
 	}
 
 	@Override
-	public TituloAcademico read(Integer id) {
+	public Doctorado read(Integer id) {
 		
-		TituloAcademico tituloAcademico = null;
+		Doctorado doctorado = null;
 		Session session = SessionFactoryService.get().openSession();
 		
 		try {
 			session.beginTransaction();
-			tituloAcademico = session.get(TituloAcademico.class, id);
+			doctorado = session.get(Doctorado.class, id);
 			session.getTransaction().commit();
 			
 		} finally {
@@ -55,17 +54,17 @@ public class TituloAcademicoDAOImplementation implements TituloAcademicoDAO{
 		}
 		
 
-		return tituloAcademico;
+		return doctorado;
 	}
 
 	@Override
-	public void update(TituloAcademico tituloAcademico) {
+	public void update(Doctorado doctorado) {
 		
 		Session  session = SessionFactoryService.get().openSession();
 		
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(tituloAcademico);
+			session.saveOrUpdate(doctorado);
 			session.getTransaction().commit();
 			} catch (Exception e) {
 			} finally {
@@ -77,13 +76,13 @@ public class TituloAcademicoDAOImplementation implements TituloAcademicoDAO{
 	}
 
 	@Override
-	public void delete(TituloAcademico tituloAcademico) {
+	public void delete(Doctorado doctorado) {
 		
 		Session  session = SessionFactoryService.get().openSession();
 		
 		try {
 		session.beginTransaction();
-		session.delete(tituloAcademico);
+		session.delete(doctorado);
 		session.getTransaction().commit();
 		} catch (Exception e) {
 				} finally {
@@ -95,7 +94,7 @@ public class TituloAcademicoDAOImplementation implements TituloAcademicoDAO{
 	}
 
 	@Override
-	public List<TituloAcademico> listAll(List<TituloAcademico> titulosAcademicos) {
+	public List<Doctorado> listAll(List<Doctorado> doctorados) {
 		// TODO Auto-generated method stub
 		return null;
 	}
