@@ -63,15 +63,15 @@ public class Investigador implements Serializable{
 	
 	@OneToMany(mappedBy = "investigador", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
-	private List<Doctorado> idiomas;
+	private List<Idioma> idiomas;
 	
 	
 	
 	
-	public List<Doctorado> getIdiomas() {
+	public List<Idioma> getIdiomas() {
 		return idiomas;
 	}
-	public void setIdiomas(List<Doctorado> idiomas) {
+	public void setIdiomas(List<Idioma> idiomas) {
 		this.idiomas = idiomas;
 	}
 	@Lob

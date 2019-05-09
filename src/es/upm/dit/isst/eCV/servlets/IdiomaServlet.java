@@ -3,17 +3,17 @@ package es.upm.dit.isst.eCV.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.upm.dit.isst.eCV.dao.DoctoradoDAOImplementation;
 import es.upm.dit.isst.eCV.dao.IdiomaDAOImplementation;
 import es.upm.dit.isst.eCV.dao.InvestigadorDAOImplementation;
-import es.upm.dit.isst.eCV.model.Doctorado;
 import es.upm.dit.isst.eCV.model.Idioma;
 import es.upm.dit.isst.eCV.model.Investigador;
 
+@WebServlet("/IdiomaServlet")
 public class IdiomaServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,6 +24,8 @@ public class IdiomaServlet extends HttpServlet {
 
 		req.setAttribute("investigador", investigador);
 
+		req.setAttribute("doctorados", investigador.getDoctorados());
+		req.setAttribute("titulosAcademicos", investigador.getTitulosAcademicos());
 		req.setAttribute("idiomas", investigador.getIdiomas());
 		req.getSession().setAttribute("idiomaEdit", null);
 		
@@ -75,7 +77,7 @@ public class IdiomaServlet extends HttpServlet {
 	private void create(HttpServletRequest req, HttpServletResponse resp) {
 		
 		Investigador investigador = (Investigador) req.getSession().getAttribute("investigador");
-		
+		System.out.println("Se ejecuta??");
 		String idioma = req.getParameter("idioma");
 		String compAuditiva = req.getParameter("compAuditiva");
 		String compLectora = req.getParameter("compLectora");
@@ -91,6 +93,11 @@ public class IdiomaServlet extends HttpServlet {
 		idio.setIntOral(intOral);
 		idio.setExpOral(expOral);
 		idio.setExpEscrita(expEscrita);
+		idio.setInvestigador(investigador);
+		
+		
+		System.out.println(idio.getIdioma());
+		
 		
 		IdiomaDAOImplementation.getInstance().create(idio);
 		InvestigadorDAOImplementation.getInstance().update(investigador);

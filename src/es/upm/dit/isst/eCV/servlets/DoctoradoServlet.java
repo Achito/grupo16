@@ -32,6 +32,8 @@ public class DoctoradoServlet extends HttpServlet {
 		req.setAttribute("investigador", investigador);
 
 		req.setAttribute("doctorados", investigador.getDoctorados());
+		req.setAttribute("titulosAcademicos", investigador.getTitulosAcademicos());
+		req.setAttribute("idiomas", investigador.getIdiomas());
 		req.getSession().setAttribute("docEdit", null);
 		
 		

@@ -304,7 +304,7 @@
 				<td>${idio.idioma }</td>
 				<td>${idio.compAuditiva }</td>
 				<td>${idio.compLectora }</td>
-				<td>${idio.iontOral }</td>
+				<td>${idio.intOral }</td>
 				<td>${idio.expOral }</td>
 				<td>${idio.expEscrita}</td>
 				
@@ -329,78 +329,78 @@
       </tbody>
     </table>
 
-                  <form>
+                  <form action="/eCV/IdiomaServlet" method="post">
 
                         <div class="form-row">
 
                                 <div class="form-group col-md-7">
                                   <label for="inputDoc">Idioma</label>
-                                  <input type="text" class="form-control" id="inputLanguage" placeholder="">
+                                  <input type="text" class="form-control" name="idioma" value="${idiomaEdit.idioma}"required="true" id="inputLanguage" placeholder="">
                                 </div>
 
                                 <div class="form-group col-md-1">
                                         <label for="inputAudio">Comprensión auditiva</label>
-                                        <select id="inputAudio" class="form-control">
-                                          <option></option>
+                                        <select id="inputAudio" name="compAuditiva"  class="form-control">
+                                          <option value="${idiomaEdit.compAuditiva}"> ${idiomaEdit.compAuditiva}</option>
                                           <option value="A1">A1</option>
                                           <option value="A2">A2</option>
                                           <option value="B1">B1</option>
                                           <option value="B2">B2</option>
-                                          <option>C1</option>
-                                          <option>C2</option>
+                                          <option value="C1">C1</option>
+                                          <option value="C2">C2</option>
                                         </select>
                                       </div>
 
 
                                 <div class="form-group col-md-1">
                                         <label for="inputAudio">Comprensión lectora</label>
-                                        <select id="inputAudio" class="form-control">
-                                          <option></option>
-                                          <option>A1</option>
-                                          <option>A2</option>
-                                          <option>B1</option>
-                                          <option>B2</option>
-                                          <option>C1</option>
-                                          <option>C2</option>
+                                        <select id="inputAudio" name="compLectora" class="form-control">
+                                          <option value="${idiomaEdit.compLectora}"> ${idiomaEdit.compLectora}</option>
+                                          <option value="A1">A1</option>
+                                          <option value="A2">A2</option>
+                                          <option value="B1">B1</option>
+                                          <option value="B2">B2</option>
+                                          <option value="C1">C1</option>
+                                          <option value="C2">C2</option>
                                         </select>
                                       </div>
 
                                       <div class="form-group col-md-1">
                                             <label for="inputAudio">Interacción oral</label>
-                                            <select id="inputAudio" class="form-control">
-                                                    <option></option>
-                                                    <option>A1</option>
-                                                    <option>A2</option>
-                                                    <option>B1</option>
-                                                    <option>B2</option>
-                                                    <option>C1</option>
-                                                    <option>C2</option>
+                                            <select id="inputAudio" name="intOral" class="form-control">
+                                                    <option value="${idiomaEdit.intOral}"> ${idiomaEdit.intOral}</option>
+                                          			<option value="A1">A1</option>
+                                          			<option value="A2">A2</option>
+                                          			<option value="B1">B1</option>
+                                          			<option value="B2">B2</option>
+                                          			<option value="C1">C1</option>
+                                          			<option value="C2">C2</option>
                                             </select>
                                           </div>
 
                                         <div class="form-group col-md-1">
                                                 <label for="inputAudio">Expresión oral</label>
-                                                <select id="inputAudio" class="form-control">
-                                                        <option></option>
-                                                        <option>A1</option>
-                                                        <option>A2</option>
-                                                        <option>B1</option>
-                                                        <option>B2</option>
-                                                        <option>C1</option>
-                                                        <option>C2</option>
+                                                <select id="inputAudio" name="expOral" class="form-control">
+                                                    <option value="${idiomaEdit.expOral}"> ${idiomaEdit.expOral}</option>
+                                          			<option value="A1">A1</option>
+                                          			<option value="A2">A2</option>
+                                          			<option value="B1">B1</option>
+                                          			<option value="B2">B2</option>
+                                          			<option value="C1">C1</option>
+                                          			<option value="C2">C2</option>
                                                 </select>
                                             </div>
 
                                             <div class="form-group col-md-1">
                                                     <label for="inputAudio">Expresión escrita</label>
-                                                    <select id="inputAudio" class="form-control">
-                                                            <option></option>
-                                                            <option>A1</option>
-                                                            <option>A2</option>
-                                                            <option>B1</option>
-                                                            <option>B2</option>
-                                                            <option>C1</option>
-                                                            <option>C2</option>
+                                                    <select id="inputAudio"  name="expEscrita" class="form-control">
+                                                    <option value="${idiomaEdit.expEscrita}"> ${idiomaEdit.expEscrita}</option>
+                                          			<option value="A1">A1</option>
+                                          			<option value="A2">A2</option>
+                                          			<option value="B1">B1</option>
+                                          			<option value="B2">B2</option>
+                                          			<option value="C1">C1</option>
+                                          			<option value="C2">C2</option>
                                                     </select>
                                                 </div>
 
@@ -412,9 +412,17 @@
 
                                   <div class="form-row">
 
-                                        <div class="form-group col-md-3">
-                                            <button type="submit" class="btn btn-primary ">Guardar</button>
-                                        </div>
+                                        <c:if test="${idiomaEdit != null }">
+                                  <div class="col text-left">
+                                      <button type="submit" class="btn btn-primary ">Editar</button>
+                                  </div>
+                  					</c:if>
+                  					
+                  					<c:if test="${idiomaEdit == null }">
+                                  <div class="col text-left">
+                                      <button type="submit" class="btn btn-primary ">Guardar</button>
+                                  </div>
+                  					</c:if>
                                         
                                       </div>
 
