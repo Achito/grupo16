@@ -33,6 +33,7 @@ public class Investigador implements Serializable{
 	private Integer id;
 	private String email;
 	private String password;
+	
 	private String name;
 	private String address1;
 	private String address2;
@@ -64,6 +65,10 @@ public class Investigador implements Serializable{
 	@OneToMany(mappedBy = "investigador", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Idioma> idiomas;
+	
+	@OneToMany(mappedBy = "investigador", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<ActividadDocente> actividadesDocentes;
 	
 	
 	
@@ -191,6 +196,13 @@ public class Investigador implements Serializable{
 	}
 	public void setDoctorados(List<Doctorado> doctorados) {
 		this.doctorados = doctorados;
+	}
+	
+	public List<ActividadDocente> getActividadesDocentes() {
+		return actividadesDocentes;
+	}
+	public void setActividadesDocentes(List<ActividadDocente> actividadesDocentes) {
+		this.actividadesDocentes = actividadesDocentes;
 	}
 	
 }

@@ -39,9 +39,7 @@ public class IdiomaServlet extends HttpServlet {
 				Idioma idiomaEdit = IdiomaDAOImplementation.getInstance().read(idiomaEditId);
 			
 				req.getSession().setAttribute("idiomaEdit", idiomaEdit);
-				
-			
-			
+
 		}
 		
 
