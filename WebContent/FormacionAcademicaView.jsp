@@ -283,17 +283,51 @@
                         <th scope="col">Idioma</th>
                         <th scope="col">Comprensión auditiva</th>
                         <th scope="col">Comprensión de lectura</th>
-                        <th scope="col">Comprensión de lectura</th>
                         <th scope="col">Interacción oral</th>
-                        <th scope="col">Expresión</th>
+                        <th scope="col">Expresión oral</th>
+                        <th scope="col">Expresión escrita</th>
+                        <th scope="col">Editas</th>
+                        <th scope="col">Eliminar</th>
                       </tr>
                     </thead>
                     <tbody>
+                    
+                     <c:if test="${fn:length(idiomas) < 1}">
                       <tr>
                         <td scope="row">No posee ningún título de idiomas almacenado en el sistema.</td>
                       </tr>
-                    </tbody>
-                  </table>
+                      </c:if>
+                      
+                      
+                 <c:forEach items="${idiomas}" var="idio">
+				<tr>
+				<td>${idio.idioma }</td>
+				<td>${idio.compAuditiva }</td>
+				<td>${idio.compLectora }</td>
+				<td>${idio.iontOral }</td>
+				<td>${idio.expOral }</td>
+				<td>${idio.expEscrita}</td>
+				
+				
+				
+				<td>
+				<a href="/eCV/IdiomaServlet?edit=${idio.id}"   >
+				<button type="submit" class="glyphicon glyphicon-edit"></button>
+				</a>
+				
+				</td>
+				
+				<td>
+				<form action="IdiomaServlet" method="POST"  >
+				<button type="submit" name="delete" value="${idio.id}"class="glyphicon glyphicon-remove"></button>
+				</form>
+				
+				</td>
+				
+				</tr>
+			</c:forEach>
+      </tbody>
+    </table>
 
                   <form>
 
@@ -308,10 +342,10 @@
                                         <label for="inputAudio">Comprensión auditiva</label>
                                         <select id="inputAudio" class="form-control">
                                           <option></option>
-                                          <option>A1</option>
-                                          <option>A2</option>
-                                          <option>B1</option>
-                                          <option>B2</option>
+                                          <option value="A1">A1</option>
+                                          <option value="A2">A2</option>
+                                          <option value="B1">B1</option>
+                                          <option value="B2">B2</option>
                                           <option>C1</option>
                                           <option>C2</option>
                                         </select>
