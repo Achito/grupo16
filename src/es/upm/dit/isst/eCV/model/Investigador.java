@@ -61,7 +61,19 @@ public class Investigador implements Serializable{
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Doctorado> doctorados;
 	
+	@OneToMany(mappedBy = "investigador", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Doctorado> idiomas;
 	
+	
+	
+	
+	public List<Doctorado> getIdiomas() {
+		return idiomas;
+	}
+	public void setIdiomas(List<Doctorado> idiomas) {
+		this.idiomas = idiomas;
+	}
 	@Lob
 	private byte[] photo;
 	
