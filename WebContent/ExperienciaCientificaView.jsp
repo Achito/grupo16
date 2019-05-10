@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Experiencia cientÃ­fica y tecnolÃ³gica</title>
+  <title>Experiencia científica y tecnológica</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="pics/icon.png">
@@ -68,39 +68,70 @@
 <div class="container justify-content-center">
 
         <div class="container text-left">
-                <h3>Proyectos de I+D+i financiados en convocatorias competitivas de Administraciones o entidades pÃºblicas y privadas</h3>
+                <h3>Proyectos de I+D+i financiados en convocatorias competitivas de Administraciones o entidades públicas y privadas</h3>
             </div>
 
             <table class="table">
                     <thead>
                       <tr class="bg-primary">
                         <th scope="col">Nombre del proyecto</th>
-                        <th scope="col">Entidad de realizaciÃ³n</th>
+                        <th scope="col">Entidad de realización</th>
                         <th scope="col">Fecha de inicio</th>
+                        <th scope="col">Fecha de finalización</th>
                         <th scope="col">Editar</th>
                         <th scope="col">Eliminar</th>
                         
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td scope="row">No posee ningÃºn proyecto almacenado en el sistema.</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                     
+                     <c:if test="${fn:length(proyectos) < 1}">
+      					<tr>
+      					<td>
+      					No hay ninguna actividad docente añadida.
+      					</td>
+      					</tr>
+      					</c:if>
+      					
+      					<c:forEach items="${proyectos}" var="proyecto">
+				<tr>
+				<td>${proyecto.nombreProyecto }</td>
+				<td>${proyecto.entidadRealizacion }</td>
+				<td>${proyecto.fechaInicio }</td>
+				<td>${proyecto.fechaFin }</td>
+				
+				
+				<td>
+				<a href="/eCV/ProyectoServlet?edit=${proyecto.id}"   >
+				<button type="submit" class="glyphicon glyphicon-edit"></button>
+				</a>
+				
+				</td>
+				
+				<td>
+				<form action="ProyectoServlet" method="POST"  >
+				<button type="submit" name="delete" value="${ proyecto.id}"class="glyphicon glyphicon-remove"></button>
+				</form>
+				
+				</td>
+				
+				</tr>
+			</c:forEach>
+      </tbody>
+    </table>
 
-                  <form>
+                  <form method="post" action="/eCV/ProyectoServlet" >
 
                         <div class="form-row">
 
                                 <div class="form-group col-md-8">
                                   <label for="inputName">Nombre del proyecto</label>
-                                  <input type="email" class="form-control" id="inputName" name="nombreProyecto" value="${proyecto.nombreProyecto }" placeholder="Nombre del proyecto">
+                                  <input type="text" class="form-control" id="inputName" name="nombreProyecto" value="${proyectoEdit.nombreProyecto }" placeholder="Nombre del proyecto">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                  <label for="inputDate">NÂº de investigadores/as</label>
-                                  <input type="number" class="form-control" id="inputPassword4">
+                                  <label for="inputDate">Nº de investigadores/as</label>
+                                  <input type="number" class="form-control" name="numeroInvestigadores" value="${proyectoEdit.numeroInvestigadores }" id="inputPassword4">
                                 </div>
 
                               </div>
@@ -110,74 +141,81 @@
                                         
                                     <div class="form-group col-md-10">
                                             <label for="inputType">Nombre </label>
-                                            <input type="text" class="form-control" >                                      
+                                            <input type="text" class="form-control" name="nombreInvestigador" value="${proyectoEdit.nombreInvestigador }" >                                      
                                           </div> 
                                     
                                     <div class="form-group col-md-2">
                                         <label for="inputAudio"> Posicion   </label>
-                                        <input type="text" class="form-control" > 
+                                        <input type="text" class="form-control" name="posicion" value="${proyectoEdit.posicion }" > 
                                                                              
                                           </div> 
                                         </div>
                                           
                                         <div class="form-row">
 
-                                    <div class="form-group col-md-10">
-                                      <label for="inputEntity">Entidad de realizaciÃ³n</label>
-                                      <input type="text" class="form-control" id="inputEntity" placeholder="">
+                                    <div class="form-group col-md-12">
+                                      <label for="inputEntity">Entidad de realización</label>
+                                      <input type="text" class="form-control"name="entidadRealizacion" value="${proyectoEdit.entidadRealizacion }" id="inputEntity" placeholder="">
                                     </div>
                                      </div>
 
                                     <div class="form-row">
 
                                     <div class="form-group col-md-4">
-                                        <label for="inputEntity">ciudad entidad de realizaciÃ³n</label>
-                                        <input type="text" class="form-control" id="inputEntity" placeholder="">
+                                        <label for="inputEntity">Ciudad entidad de realización</label>
+                                        <input type="text" class="form-control" name="ciudad" value="${proyectoEdit.ciudad }" id="inputEntity" placeholder="">
                                       </div>
 
                                      <div class="form-group col-md-4">
-                                          <label for="inputEntity">PaÃ­s entidad de realizaciÃ³n</label>
-                                          <input type="text" class="form-control" id="inputEntity" placeholder="">
+                                          <label for="inputEntity">País entidad de realización</label>
+                                          <input type="text" class="form-control" name="pais" value="${proyectoEdit.pais }" id="inputEntity" placeholder="">
                                         </div>
 
                                       <div class="form-group col-md-4">
-                                          <label for="inputAudio">C. AutÃ³n./Reg. entidad realizaciÃ³n </label>
-                                          <select id="inputAudio" class="form-control">
-                                            <option></option>                                          
-                                          </select>  
+                                          <label for="inputAudio">C. Autón./Reg. entidad realización </label>
+                                          <input type="text"  name="region" value="${proyectoEdit.region }" id="inputAudio" class="form-control">
+                                                                                      
+                                          
                                           </div>
 
                                         </div>
 
                                         <div class="form-row">
+                                        
                                       <div class="form-group col-md-4">
                                           <label for="inputDate">Fecha de inicio</label>
-                                          <input type="date" class="form-control" id="inputPassword4" placeholder="ContraseÃ±a nueva">
+                                          <input type="date" class="form-control" name="fechaInicio" value="${proyectoEdit.fechaInicio }" id="inputPassword4" >
                                         </div>
 
                                         <div class="form-group col-md-4">
-                                            <label for="inputDate">Fecha de finalizaciÃ³n</label>
-                                            <input type="date" class="form-control" id="inputPassword4" placeholder="ContraseÃ±a nueva">
+                                            <label for="inputDate">Fecha de finalización</label>
+                                            <input type="date" class="form-control" name="fechaFin" value="${proyectoEdit.fechaFin }" id="inputPassword4" >
                                           </div>
 
                                         <div class="form-group col-md-4">
-                                            <label for="inputDate">Cuantia total (â‚¬)</label>
-                                            <input type="date" class="form-control" id="inputPassword4" placeholder="ContraseÃ±a nueva">
+                                            <label for="inputDate">Cuantia total (Euros)</label>
+                                            <input type="date" class="form-control" name="cuantia" value="${proyectoEdit.cuantia }" id="inputPassword4" >
                                           </div>
+                                          
                                         </div>
+                                        
 
                                           <div class="form-row">
 
-                                        <div class="form-group col-md-3">
-                                            <button type="submit" margin-right:6px class="btn btn-primary " style="float:left;">Guardar</button>
-                                        </div>
+                                        <c:if test="${proyectoEdit != null }">
+                                  <div class="col text-left">
+                                      <button type="submit" class="btn btn-primary ">Editar</button>
+                                  </div>
+                  					</c:if>
+                  					
+                  					<c:if test="${proyectoEdit == null }">
+                                  <div class="col text-left">
+                                      <button type="submit" class="btn btn-primary ">Guardar</button>
+                                  </div>
+                  					</c:if>
                                         
                                       </div>
     
-                                  </div>
-
-                                 
-                                      
 
                   </form>
 
@@ -189,7 +227,7 @@
 <div class="container justify-content-center">
 
     <div class="container text-left">
-            <h3>Contratos, convenios o proyectos de I+D+i no competitivos con Administraciones o entidades pÃºblicas o privadas </h3>
+            <h3>Contratos, convenios o proyectos de I+D+i no competitivos con Administraciones o entidades públicas o privadas </h3>
         </div>
 
         <table class="table">
@@ -202,7 +240,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td scope="row">No posee ningÃºn tÃ­tulo almacenado en el sistema.</td>
+                    <td scope="row">No posee ningún título almacenado en el sistema.</td>
                   </tr>
                 </tbody>
               </table>
@@ -217,7 +255,7 @@
                             </div>
 
                             <div class="form-group col-md-4">
-                              <label for="inputDate">NÂº de investigadores/as</label>
+                              <label for="inputDate">Nº de investigadores/as</label>
                               <input type="number" class="form-control" id="inputPassword4">
                             </div>
 
@@ -251,16 +289,16 @@
                                       
 
                                       <div class="form-group col-md-5">
-                                        <label for="inputAudio"> Grado de contribuciÃ³n   </label>
+                                        <label for="inputAudio"> Grado de contribución   </label>
                                         <select id="inputAudio" class="form-control">
                                           <option></option>
                                           <option>Coordinador del proyecto total, red o consorcio</option>     
-                                          <option>Coordinador/a cientÃ­fico/a</option>
+                                          <option>Coordinador/a científico/a</option>
                                           <option>Coordinador/a gerente</option> 
                                           <option>Investigador/a</option> 
                                           <option>Otros</option> 
-                                          <option>TÃ©cnico/a</option> 
-                                          <option>Titulado/a universitario/a en formaciÃ³n</option>                                                                            
+                                          <option>Técnico/a</option> 
+                                          <option>Titulado/a universitario/a en formación</option>                                                                            
                                         </select>                                     
                                           </div> 
 
@@ -271,11 +309,11 @@
 
                                   <div class="form-group col-md-4">
                                       <label for="inputDate">Fecha de inicio</label>
-                                      <input type="date" class="form-control" id="inputPassword4" placeholder="ContraseÃ±a nueva">
+                                      <input type="date" class="form-control" id="inputPassword4" placeholder="Contraseña nueva">
                                     </div>
 
                                     <div class="form-group col-md-2">
-                                        <label for="inputEntity">AÃ±os</label>
+                                        <label for="inputEntity">Años</label>
                                         <input type="text" class="form-control" id="inputEntity" placeholder="">
                                       </div>
 
@@ -284,12 +322,12 @@
                                         <input type="text" class="form-control" id="inputEntity" placeholder="">
                                       </div>
                                     <div class="form-group col-md-2">
-                                        <label for="inputEntity">dÃ­as</label>
+                                        <label for="inputEntity">días</label>
                                         <input type="text" class="form-control" id="inputEntity" placeholder="">
                                       </div>
 
                                     <div class="form-group col-md-2">                                            
-                                        <label for="inputDate">CuantÃ­a total</label>                                          
+                                        <label for="inputDate">Cuantía total</label>                                          
                                         <input type="text" class="text-right" placeholder="   ">
                                      </div>
 
@@ -319,14 +357,14 @@
         <table class="table">
                 <thead>
                   <tr class="bg-primary">
-                    <th scope="col">TÃ­tulo propiedad industrial registrada</th>
+                    <th scope="col">Título propiedad industrial registrada</th>
                     <th scope="col">Entidad titular de derechos</th>
                     <th scope="col">Fecha de registro</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td scope="row">No posee ningÃºn tÃ­tulo almacenado en el sistema.</td>
+                    <td scope="row">No posee ningún título almacenado en el sistema.</td>
                   </tr>
                 </tbody>
               </table>
@@ -336,35 +374,35 @@
                     <div class="form-row">
 
                             <div class="form-group col-md-5">
-                              <label for="inputName">TÃ­tulo propiedad industrial registrada</label>
-                              <input type="email" class="form-control" id="inputName" placeholder="TÃ­tulo propiedad industrial registrada">
+                              <label for="inputName">Título propiedad industrial registrada</label>
+                              <input type="email" class="form-control" id="inputName" placeholder="Título propiedad industrial registrada">
                             </div>
 
                             <div class="form-group col-md-3">
                                 <label for="inputDate">Fecha de registro</label>
-                                <input type="date" class="form-control" id="inputPassword4" placeholder="ContraseÃ±a nueva">
+                                <input type="date" class="form-control" id="inputPassword4" placeholder="Contraseña nueva">
                               </div>
                             <div class="form-group col-md-3">
-                                <label for="inputDate">Fecha de concesiÃ³n</label>
-                                <input type="date" class="form-control" id="inputPassword4" placeholder="ContraseÃ±a nueva">
+                                <label for="inputDate">Fecha de concesión</label>
+                                <input type="date" class="form-control" id="inputPassword4" placeholder="Contraseña nueva">
                               </div>
                           </div>
 
                           <div class="form-row">
 
                                 <div class="form-group col-md-4">
-                                        <label for="inputType">NÂº de solicitud </label>
+                                        <label for="inputType">Nº de solicitud </label>
                                         <input type="text" class="form-control" id="inputPassword4">                                      
                                       </div>
                                       
                                 <div class="form-group col-md-4">
-                                        <label for="inputType">Pais de inscripciÃ³n </label>
+                                        <label for="inputType">Pais de inscripción </label>
                                         <select id="inputAudio" class="form-control">
                                             <option></option>                                          
                                           </select>                                        
                                       </div> 
                                 <div class="form-group col-md-4">
-                                        <label for="inputType">C. AutÃ³n./Reg. de inscripciÃ³n</label>
+                                        <label for="inputType">C. Autón./Reg. de inscripción</label>
                                         <select id="inputAudio" class="form-control">
                                             <option></option>                                          
                                           </select>                                        

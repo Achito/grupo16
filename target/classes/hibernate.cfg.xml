@@ -20,6 +20,7 @@
 		<mapping class="es.upm.dit.isst.eCV.model.Doctorado" />
 		<mapping class="es.upm.dit.isst.eCV.model.Idioma" />
 		<mapping class="es.upm.dit.isst.eCV.model.ActividadDocente" />
+		<mapping class="es.upm.dit.isst.eCV.model.Proyecto" />
 		
 	</session-factory>
 </hibernate-configuration>

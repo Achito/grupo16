@@ -100,11 +100,14 @@
 <div class="container">    
   <div class="row">
     <div class="col-sm-4">
+    <a href="ProyectoServlet">
 
       <div class="panel panel-primary">
         <div class="panel-heading text-center">Experiencia científica y tecnológica</div>
         <div class="panel-body"><img src="pics\img4.png" class="img-responsive" style="width:100%" alt="Image"></div>
       </div>
+      </a>
+      
     </div>
     <div class="col-sm-4"> 
       <div class="panel panel-primary">
