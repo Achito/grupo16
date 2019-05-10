@@ -75,7 +75,7 @@ public class IdiomaServlet extends HttpServlet {
 	private void create(HttpServletRequest req, HttpServletResponse resp) {
 		
 		Investigador investigador = (Investigador) req.getSession().getAttribute("investigador");
-		System.out.println("Se ejecuta??");
+		//System.out.println("Se ejecuta??");
 		String idioma = req.getParameter("idioma");
 		String compAuditiva = req.getParameter("compAuditiva");
 		String compLectora = req.getParameter("compLectora");

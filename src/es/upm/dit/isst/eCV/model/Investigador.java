@@ -70,15 +70,14 @@ public class Investigador implements Serializable{
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<ActividadDocente> actividadesDocentes;
 	
+	@OneToMany(mappedBy = "investigador", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Proyecto> proyectos;
 	
 	
 	
-	public List<Idioma> getIdiomas() {
-		return idiomas;
-	}
-	public void setIdiomas(List<Idioma> idiomas) {
-		this.idiomas = idiomas;
-	}
+	
+	
 	@Lob
 	private byte[] photo;
 	
@@ -203,6 +202,19 @@ public class Investigador implements Serializable{
 	}
 	public void setActividadesDocentes(List<ActividadDocente> actividadesDocentes) {
 		this.actividadesDocentes = actividadesDocentes;
+	}
+	
+	public List<Proyecto> getProyectos() {
+		return proyectos;
+	}
+	public void setProyectos(List<Proyecto> proyectos) {
+		this.proyectos = proyectos;
+	}
+	public List<Idioma> getIdiomas() {
+		return idiomas;
+	}
+	public void setIdiomas(List<Idioma> idiomas) {
+		this.idiomas = idiomas;
 	}
 	
 }
