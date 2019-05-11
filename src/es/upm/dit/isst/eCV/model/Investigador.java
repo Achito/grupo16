@@ -32,6 +32,12 @@ public class Investigador implements Serializable{
 	@Id
 	private Integer id;
 	private String email;
+	public List<Publicacion> getPublicaciones() {
+		return publicaciones;
+	}
+	public void setPublicaciones(List<Publicacion> publicaciones) {
+		this.publicaciones = publicaciones;
+	}
 	private String password;
 	
 	private String name;
@@ -78,6 +84,9 @@ public class Investigador implements Serializable{
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<PropiedadIntelectual> propiedades;
 	
+	@OneToMany(mappedBy = "investigador", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Publicacion> publicaciones;
 	
 	
 	
