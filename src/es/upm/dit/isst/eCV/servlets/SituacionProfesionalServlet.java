@@ -107,6 +107,9 @@ public class SituacionProfesionalServlet extends HttpServlet{
 		String terciaria = req.getParameter("terciaria");
 		String palabrasClave = req.getParameter("palabrasClave");
 		String funciones = req.getParameter("funciones");
+		String modalidadContrato = req.getParameter("modalidadContrato");
+		String dedicacion = req.getParameter("dedicacion");
+		String tipoEntidad = req.getParameter("tipoEntidad");
 		
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -152,21 +155,14 @@ public class SituacionProfesionalServlet extends HttpServlet{
 		sp.setPalabrasClave(palabrasClave);
 		sp.setFunciones(funciones);
 		sp.setInvestigador(investigador);
+		sp.setModalidadContrato(modalidadContrato);
+		sp.setModalidadContrato(dedicacion);
+		sp.setTipoEntidad(tipoEntidad);
 		
-		if(req.getParameter("modalidadContrato") != null && !(req.getParameter("modalidadContrato").equals("") )){
-			Integer modalidadContrato =  Integer.parseInt(req.getParameter("modalidadContrato"));
-			sp.setModalidadContrato(modalidadContrato);
-			}
 		
-		if(req.getParameter("tipoEntidad") != null && !(req.getParameter("tipoEntidad").equals(""))){
-			Integer tipoEntidad =  Integer.parseInt(req.getParameter("tipoEntidad"));
-			sp.setTipoEntidad(tipoEntidad);
-			}
 		
-		if(req.getParameter("dedicacion") != null && !(req.getParameter("dedicacion").equals(""))){
-			Integer dedicacion =  Integer.parseInt(req.getParameter("dedicacion"));
-			sp.setDedicacion(dedicacion);
-			}
+		
+		
 		
 		if(fechaInicio != null) {
 			sp.setFechaInicio(fechaInicio);
@@ -198,6 +194,11 @@ Investigador investigador = (Investigador) req.getSession().getAttribute("invest
 		String terciaria = req.getParameter("terciaria");
 		String palabrasClave = req.getParameter("palabrasClave");
 		String funciones = req.getParameter("funciones");
+		String modalidadContrato = req.getParameter("modalidadContrato");
+		String dedicacion = req.getParameter("dedicacion");
+		String tipoEntidad = req.getParameter("tipoEntidad");
+
+
 		
 		System.out.println(req.getParameter("fechaFinal"));
 		
@@ -246,21 +247,12 @@ Investigador investigador = (Investigador) req.getSession().getAttribute("invest
 		sp.setPalabrasClave(palabrasClave);
 		sp.setFunciones(funciones);
 		sp.setInvestigador(investigador);
+		sp.setModalidadContrato(modalidadContrato);
+		sp.setModalidadContrato(dedicacion);
+		sp.setTipoEntidad(tipoEntidad);
 		
-		if(req.getParameter("modalidadContrato") != null && !(req.getParameter("modalidadContrato").equals("") )){
-			Integer modalidadContrato =  Integer.parseInt(req.getParameter("modalidadContrato"));
-			sp.setModalidadContrato(modalidadContrato);
-			}
 		
-		if(req.getParameter("tipoEntidad") != null && !(req.getParameter("tipoEntidad").equals(""))){
-			Integer tipoEntidad =  Integer.parseInt(req.getParameter("tipoEntidad"));
-			sp.setTipoEntidad(tipoEntidad);
-			}
 		
-		if(req.getParameter("dedicacion") != null && !(req.getParameter("dedicacion").equals(""))){
-			Integer dedicacion =  Integer.parseInt(req.getParameter("dedicacion"));
-			sp.setDedicacion(dedicacion);
-			}
 		
 		if(fechaInicio != null) {
 			sp.setFechaInicio(fechaInicio);

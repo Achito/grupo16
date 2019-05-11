@@ -32,8 +32,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		req.setAttribute("investigador", investigador);
 
 		req.setAttribute("proyectos", investigador.getProyectos());
-		//req.setAttribute("titulosAcademicos", investigador.getTitulosAcademicos());
-		//req.setAttribute("idiomas", investigador.getIdiomas());
+		req.setAttribute("propiedades", investigador.getPropiedades());
 		req.getSession().setAttribute("proyectoEdit", null);
 		
 		

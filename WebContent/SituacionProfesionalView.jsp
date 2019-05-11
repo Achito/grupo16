@@ -177,14 +177,14 @@
                   </label>
                 <select name="modalidadContrato" class="form-control">
                   <option value="0" selected>Elija</option>
-                  <option value="1">Becario/a (pre o posdoctoral, otros)</option>
-                  <option value="2">Contrato laboral indefinido</option>
-                  <option value="3">Contrato laboral temporal</option>
-                  <option value="4">Emérito/a</option>
-                  <option value="5">Estatuario/a</option>
-                  <option value="6">Funcionario/a</option>
-                  <option value="7">Interino/a</option>
-                  <option value="8">Otros</option>
+                  <option value="Becario/a (pre o posdoctoral, otros)">Becario/a (pre o posdoctoral, otros)</option>
+                  <option value="Contrato laboral indefinido">Contrato laboral indefinido</option>
+                  <option value="Contrato laboral temporal">Contrato laboral temporal</option>
+                  <option value="Emérito/a">Emérito/a</option>
+                  <option value="Estatuario/a">Estatuario/a</option>
+                  <option value="Funcionario/a">Funcionario/a</option>
+                  <option value="Interino/a">Interino/a</option>
+                  <option value="Otros">Otros</option>
                 </select>
               </div> 
               
@@ -197,6 +197,7 @@
 
         
         <div class="form-row">
+        
                 <div class="form-group col-md-8">
                         <label for="inputDocument">Primaria (Cód. Unesco) </label>
                         <input type="text" class="form-control" name="primaria" value="${spEdit.primaria }">

@@ -20,14 +20,14 @@ public class SituacionProfesional implements Serializable{
 	private Integer id;
 	private String entidadEmpleadora;
 	private String categoriaProfesional;
-	private Integer modalidadContrato;
+	private String modalidadContrato;
 	private String primaria;
 	private String secundaria;
 	private String terciaria;
-	private Integer dedicacion;
+	private String dedicacion;
 	private String palabrasClave;
 	private String funciones;
-	private Integer tipoEntidad;
+	private String tipoEntidad;
 	
 	@Temporal(TemporalType.DATE)
 	private Date fechaInicio;
@@ -61,11 +61,11 @@ public class SituacionProfesional implements Serializable{
 		this.categoriaProfesional = categoriaProfesional;
 	}
 
-	public Integer getModalidadContrato() {
+	public String getModalidadContrato() {
 		return modalidadContrato;
 	}
 
-	public void setModalidadContrato(Integer modalidadContrato) {
+	public void setModalidadContrato(String modalidadContrato) {
 		this.modalidadContrato = modalidadContrato;
 	}
 
@@ -93,11 +93,11 @@ public class SituacionProfesional implements Serializable{
 		this.terciaria = terciaria;
 	}
 
-	public Integer getDedicacion() {
+	public String getDedicacion() {
 		return dedicacion;
 	}
 
-	public void setDedicacion(Integer dedicacion) {
+	public void setDedicacion(String dedicacion) {
 		this.dedicacion = dedicacion;
 	}
 
@@ -117,11 +117,11 @@ public class SituacionProfesional implements Serializable{
 		this.funciones = funciones;
 	}
 
-	public Integer getTipoEntidad() {
+	public String getTipoEntidad() {
 		return tipoEntidad;
 	}
 
-	public void setTipoEntidad(Integer tipoEntidad) {
+	public void setTipoEntidad(String tipoEntidad) {
 		this.tipoEntidad = tipoEntidad;
 	}
 

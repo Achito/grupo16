@@ -88,7 +88,7 @@
                      <c:if test="${fn:length(proyectos) < 1}">
       					<tr>
       					<td>
-      					No hay ninguna actividad docente añadida.
+      					No hay ningún proyecto añadido.
       					</td>
       					</tr>
       					</c:if>
@@ -239,31 +239,65 @@
                     <th scope="col">Título propiedad industrial registrada</th>
                     <th scope="col">Entidad titular de derechos</th>
                     <th scope="col">Fecha de registro</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td scope="row">No posee ningún título almacenado en el sistema.</td>
-                  </tr>
-                </tbody>
-              </table>
+                
+                <c:if test="${fn:length(propiedades) < 1}">
+      					<tr>
+      					<td>
+      					No hay ninguna propiedad intelectual añadida.
+      					</td>
+      					</tr>
+      					</c:if>
+      					
+      					<c:forEach items="${propiedades}" var="prop">
+				<tr>
+				<td>${prop.tituloPropiedad }</td>
+				<td>${prop.entidadDerechos }</td>
+				<td>${prop.fechaRegistro }</td>
+				
+				
+				<td>
+				<a href="/eCV/PropiedadIntelectualServlet?edit=${prop.id}"   >
+				<button type="submit" class="glyphicon glyphicon-edit"></button>
+				</a>
+				
+				</td>
+				
+				<td>
+				<form action="PropiedadIntelectualServlet" method="POST"  >
+				<button type="submit" name="delete" value="${prop.id}"class="glyphicon glyphicon-remove"></button>
+				</form>
+				
+				</td>
+				
+				</tr>
+			</c:forEach>
+      </tbody>
+    </table>
+      					
+      					
 
-              <form>
+              <form method="post" action="/eCV/PropiedadIntelectualServlet">
 
                     <div class="form-row">
 
-                            <div class="form-group col-md-5">
+                            <div class="form-group col-md-6">
                               <label for="inputName">Título propiedad industrial registrada</label>
-                              <input type="email" class="form-control" id="inputName" placeholder="Título propiedad industrial registrada">
+                              <input type="text" class="form-control" id="inputName" name="tituloPropiedad" value="${propiedadEdit.tituloPropiedad }" placeholder="Título propiedad industrial registrada">
                             </div>
 
                             <div class="form-group col-md-3">
                                 <label for="inputDate">Fecha de registro</label>
-                                <input type="date" class="form-control" id="inputPassword4" placeholder="Contraseña nueva">
+                                <input type="date" class="form-control" id="inputPassword4" name="fechaRegistro" value="${propiedadEdit.fechaRegistro }">
                               </div>
                             <div class="form-group col-md-3">
                                 <label for="inputDate">Fecha de concesión</label>
-                                <input type="date" class="form-control" id="inputPassword4" placeholder="Contraseña nueva">
+                                <input type="date" class="form-control" id="inputPassword4" name="fechaConcesion" value="${propiedadEdit.fechaConcesion }">
                               </div>
                           </div>
 
@@ -271,65 +305,66 @@
 
                                 <div class="form-group col-md-4">
                                         <label for="inputType">Nº de solicitud </label>
-                                        <input type="text" class="form-control" id="inputPassword4">                                      
+                                        <input type="text" class="form-control" name="numeroSolicitud" value="${propiedadEdit.numeroSolicitud }" id="inputPassword4">                                      
                                       </div>
                                       
                                 <div class="form-group col-md-4">
                                         <label for="inputType">Pais de inscripción </label>
-                                        <select id="inputAudio" class="form-control">
-                                            <option></option>                                          
-                                          </select>                                        
+                                        <input type="text" class="form-control" id="inputName" name="pais" value="${propiedadEdit.pais }" placeholder="País de inscripción">                                    
                                       </div> 
+                                      
                                 <div class="form-group col-md-4">
                                         <label for="inputType">C. Autón./Reg. de inscripción</label>
-                                        <select id="inputAudio" class="form-control">
-                                            <option></option>                                          
-                                          </select>                                        
+                                        <input type="text" class="form-control" id="inputName" name="region" value="${propiedadEdit.region }">                                         
                                       </div> 
-                                      <div class="form-group col-md-2">
-                                          <label for="inputType">Firma </label>
-                                          <input type="text" class="form-control" id="inputPassword4">                                      
+                                      
+                                      </div>
+                                      
+                                      <div class="form-row">
+                                      
+                                      
+                                        
+                                  <div class="form-group col-md-8">
+                                          <label for="inputType">Nombre </label>
+                                          <input type="text" class="form-control" name="nombre" value="${propiedadEdit.nombre}" id="inputPassword4">                                      
+                                        </div> 
+                                  
+                                  <div class="form-group col-md-4">
+                                      <label for="inputAudio"> Posicion   </label>
+                                      <input type="text" class="form-control" name="posicion" value="${propiedadEdit.posicion }" id="inputPassword4">                                   
                                         </div>
                                         
-                                  <div class="form-group col-md-2">
-                                          <label for="inputType">Nombre </label>
-                                          <input type="text" class="form-control" id="inputPassword4">                                      
-                                        </div> 
-                                  <div class="form-group col-md-2">
-                                          <label for="inputType">Primer Apellido </label>
-                                          <input type="text" class="form-control" id="inputPassword4">                                      
-                                        </div> 
-                                  <div class="form-group col-md-2">
-                                          <label for="inputType">Segundo Apellido </label>
-                                          <input type="text" class="form-control" id="inputPassword4">                                      
-                                        </div> 
-                                  <div class="form-group col-md-1">
-                                      <label for="inputAudio"> Posicion   </label>
-                                      <select id="inputAudio" class="form-control">
-                                        <option></option>                                          
-                                      </select>                                     
                                         </div>
                                       
-
-                                      <div class="form-group col-md-5">
+										<div class="form-row">
+										
+                                      <div class="form-group col-md-6">
                                         <label for="inputAudio"> Entidad titular de derechos </label>
-                                        <input type="text" class="form-control" id="inputPassword4">                                    
+                                        <input type="text" class="form-control" name="entidadDerechos" value="${propiedadEdit.entidadDerechos }" id="inputPassword4">                                    
                                           </div> 
 
                                 <div class="form-group col-md-6">
                                     <label for="inputEntity">Filtro</label>
-                                    <input type="text" class="form-control" id="inputEntity" placeholder="">
+                                    <input type="text" class="form-control" id="inputEntity" name="filtro" value="${propiedadEdit.filtro }" placeholder="">
                                   </div>                                
 
                               </div>
 
                               <div class="form-row">
 
-                                    <div class="form-group col-md-3">
-                                        <button type="submit" margin-right:6px class="btn btn-primary ">Guardar</button>
-                                    </div>
-                                    
+                                        <c:if test="${propiedadEdit != null }">
+                                  <div class="col text-left">
+                                      <button type="submit" class="btn btn-primary ">Editar</button>
                                   </div>
+                  					</c:if>
+                  					
+                  					<c:if test="${ propiedadEdit  == null }">
+                                  <div class="col text-left">
+                                      <button type="submit" class="btn btn-primary ">Guardar</button>
+                                  </div>
+                  					</c:if>
+                                        
+                                      </div>
 
               </form>
 

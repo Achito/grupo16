@@ -21,6 +21,7 @@
 		<mapping class="es.upm.dit.isst.eCV.model.Idioma" />
 		<mapping class="es.upm.dit.isst.eCV.model.ActividadDocente" />
 		<mapping class="es.upm.dit.isst.eCV.model.Proyecto" />
+		<mapping class="es.upm.dit.isst.eCV.model.PropiedadIntelectual" />
 		
 	</session-factory>
 </hibernate-configuration>
