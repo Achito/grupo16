@@ -70,7 +70,7 @@
     <a href="SituacionProfesionalServlet">
     <div class="col-sm-4" >
       <div class="panel panel-primary">
-        <div class="panel-heading text-center">Situaci髇 profesional</div>
+        <div class="panel-heading text-center">Situaci贸n profesional</div>
         <div class="panel-body"><img src="pics\img1.png" class="img-responsive" style="width:100%" alt="Image"></div>
         
       </div>
@@ -79,7 +79,7 @@
 	<a href="TituloAcademicoServlet">
     <div class="col-sm-4"> 
       <div class="panel panel-primary">
-        <div class="panel-heading text-center">Formaci髇 acad閙ica recibida</div>
+        <div class="panel-heading text-center">Formaci贸n acad茅mica recibida</div>
         <div class="panel-body"><img src="pics\img2.png" class="img-responsive" style="width:100%" alt="Image"></div>
       </div>
     </div>
@@ -103,7 +103,7 @@
     <a href="ProyectoServlet">
 
       <div class="panel panel-primary">
-        <div class="panel-heading text-center">Experiencia cient韋ica y tecnol骻ica</div>
+        <div class="panel-heading text-center">Experiencia cient铆fica y tecnol贸gica</div>
         <div class="panel-body"><img src="pics\img4.png" class="img-responsive" style="width:100%" alt="Image"></div>
       </div>
       </a>
@@ -113,17 +113,19 @@
     <a href="PublicacionServlet">
     <div class="col-sm-4"> 
       <div class="panel panel-primary">
-        <div class="panel-heading text-center">Actividad cient韋ica y tecnol骻ica</div>
+        <div class="panel-heading text-center">Actividad cient铆fica y tecnol贸gica</div>
         <div class="panel-body"><img src="pics\img5.png" class="img-responsive" style="width:100%" alt="Image"></div>
       </div>
     </div>
     </a>
+     <a href="ActividadSanitariaServlet">
     <div class="col-sm-4"> 
       <div class="panel panel-primary">
         <div class="panel-heading text-center">Actividad en el campo de la sanidad</div>
         <div class="panel-body"><img src="pics\img6.png" class="img-responsive" style="width:100%" alt="Image"></div>
       </div>
     </div>
+    </a>
   </div>
 </div><br><br>
 

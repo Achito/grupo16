@@ -2,10 +2,11 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Actividad Docente</title>
+  <title>Actividad sanitaria</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="pics/icon.png">
@@ -52,7 +53,6 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-
         <li><a href="#">Descargar CVN</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -66,47 +66,48 @@
 <div class="container justify-content-center">
 
         <div class="container text-left">
-                <h3>Dirección de tesis doctorales y/o proyectos fin de carrera </h3>
+                <h3>Actividad sanitaria en instituciones de la UE </h3>
             </div>
 
             <table class="table">
                     <thead>
                       <tr class="bg-primary">
-                        <th scope="col">Título de trabajo</th>
+                        <th scope="col">Resultados relevantes</th>
                         <th scope="col">Entidad de realización</th>
-                        <th scope="col">Fecha de defensa</th>
+                        <th scope="col">Fecha de inicio</th>
+                        <th scope="col">Fecha de finalización</th>
                         <th scope="col">Editar</th>
-          				<th scope="col">Eliminar</th>
-                        
+        				<th scope="col">Eliminar</th>
                       </tr>
                     </thead>
                     <tbody>
-                    
-                      <c:if test="${fn:length(actividadesDocentes) < 1}">
+                     
+                     <c:if test="${fn:length(sanitarias) < 1}">
       					<tr>
       					<td>
-      					No hay ninguna actividad docente añadida.
+      					No hay ninguna actividad sanitaria añadida.
       					</td>
       					</tr>
       					</c:if>
       					
-      					<c:forEach items="${actividadesDocentes}" var="act">
+      					<c:forEach items="${sanitarias}" var="san">
 				<tr>
-				<td>${act.titulo }</td>
-				<td>${act.entidad }</td>
-				<td>${act.fechaDefensa }</td>
+				<td>${san.resultados }</td>
+				<td>${san.entidadRealizacion }</td>
+				<td>${san.fechaInicio}</td>
+				<td>${san.fechaFin }</td>
 				
 				
 				<td>
-				<a href="/eCV/ActividadDocenteServlet?edit=${act.id}"   >
+				<a href="/eCV/ActividadSanitariaServlet?edit=${san.id}"   >
 				<button type="submit" class="glyphicon glyphicon-edit"></button>
 				</a>
 				
 				</td>
 				
 				<td>
-				<form action="ActividadDocenteServlet" method="POST"  >
-				<button type="submit" name="delete" value="${act.id}"class="glyphicon glyphicon-remove"></button>
+				<form action="ActividadSanitariaServlet" method="POST"  >
+				<button type="submit" name="delete" value="${ san.id}"class="glyphicon glyphicon-remove"></button>
 				</form>
 				
 				</td>
@@ -115,70 +116,80 @@
 			</c:forEach>
       </tbody>
     </table>
-      					
-      					
 
-                  <form method="post" action="/eCV/ActividadDocenteServlet">
+                  <form method="post" action="/eCV/ActividadSanitariaServlet">
 
-                       <div class="form-row">
+                        <div class="form-row">
 
-                                <div class="form-group col-md-8">
-                                  <label for="inputName">Título del trabajo</label>
-                                  <input type="text" class="form-control" id="inputName" required="true" name="titulo" value="${actEdit.titulo }" placeholder="">
+                                <div class="form-group col-md-12">
+                                  <label for="inputName">Resultados relevantes</label>
+                                  <input type="text" name="resultados" value="${sanitariaEdit.resultados }" class="form-control" id="inputName" placeholder="">
                                 </div>
 
-                                <div class="form-group col-md-4">
-                                  <label for="inputDate">Fecha de defensa</label>
-                                  <input type="date" class="form-control" name="fechaDefensa" value="${actEdit.fechaDefensa }" id="inputDate" >
-                                </div>
+
 
                               </div>
 
 
                               <div class="form-row">
 
-                                    <div class="form-group col-md-12">
-                                  <label for="inputAlumni">Nombre del alumno</label>
-                                  <input type="text" class="form-control" id="inputAlumni" required="true" name="nombreAlumno" value="${actEdit.nombreAlumno }" placeholder="">
+                                <div class="form-group col-md-12">
+                                  <label for="inputDate">Entidad de realización</label>
+                                  <input type="text" name="entidadRealizacion" value="${sanitariaEdit.entidadRealizacion }"class="form-control" id="inputDate" >
                                 </div>
     
-                                    
-    
-                                  </div>
-                                  
-                                  <div class="form-row">
 
-                                    <div class="form-group col-md-12">
-                                  <label for="inputAlumni">Entidad de realización</label>
-                                  <input type="text" class="form-control" id="inputAlumni" required="true" name="entidad" value="${actEdit.entidad }" placeholder="">
-                                </div>
-    
-                                    
     
                                   </div>
 
                                   <div class="form-row">
 
-                                        <c:if test="${taEdit != null }">
+                                        <div class="form-group col-md-12">
+                                      <label for="inputUni">Entidad de afiliciación</label>
+                                      <input type="text" class="form-control" name="entidadAfiliacion" value="${sanitariaEdit.entidadAfiliacion }" id="inputUni" placeholder="">
+                                    </div>
+        
+        
+                                      </div>
+
+
+                                  <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                  <label for="inputUni">Fecha de inicio</label>
+                                  <input type="date" name="fechaInicio" value="${sanitariaEdit.fechaInicio }" class="form-control" id="inputUni" placeholder="">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                  <label for="inputUni">Fecha de finalización</label>
+                                  <input type="date" class="form-control" name="fechaFin" value="${sanitariaEdit.fechaFin }" id="inputUni" placeholder="">
+                                </div>
+    
+    
+                                  <div class="form-row">
+
+                                        <c:if test="${sanitariaEdit != null }">
                                   <div class="col text-left">
                                       <button type="submit" class="btn btn-primary ">Editar</button>
                                   </div>
                   					</c:if>
                   					
-                  					<c:if test="${taEdit == null }">
+                  					<c:if test="${sanitariaEdit == null }">
                                   <div class="col text-left">
                                       <button type="submit" class="btn btn-primary ">Guardar</button>
                                   </div>
                   					</c:if>
                                         
                                       </div>
+    
 
                   </form>
 
 
 </div>
+                
 
-
-
+</div>
+</div>
 </body>
 </html>

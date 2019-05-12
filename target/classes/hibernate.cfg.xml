@@ -23,6 +23,7 @@
 		<mapping class="es.upm.dit.isst.eCV.model.Proyecto" />
 		<mapping class="es.upm.dit.isst.eCV.model.PropiedadIntelectual" />
 		<mapping class="es.upm.dit.isst.eCV.model.Publicacion" />
+		<mapping class="es.upm.dit.isst.eCV.model.ActividadSanitaria" />
 		
 	</session-factory>
 </hibernate-configuration>

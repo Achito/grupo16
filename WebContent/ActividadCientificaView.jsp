@@ -53,8 +53,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Editar CVN</a></li>
-        <li><a href="#">Importar CVN</a></li>
+
         <li><a href="#">Descargar CVN</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
