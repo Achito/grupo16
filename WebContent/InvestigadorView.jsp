@@ -117,12 +117,14 @@
       </div>
     </div>
     </a>
+     <a href="ActividadSanitariaServlet">
     <div class="col-sm-4"> 
       <div class="panel panel-primary">
         <div class="panel-heading text-center">Actividad en el campo de la sanidad</div>
         <div class="panel-body"><img src="pics\img6.png" class="img-responsive" style="width:100%" alt="Image"></div>
       </div>
     </div>
+    </a>
   </div>
 </div><br><br>
 

@@ -88,6 +88,10 @@ public class Investigador implements Serializable{
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Publicacion> publicaciones;
 	
+	@OneToMany(mappedBy = "investigador", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<ActividadSanitaria> sanitarias;
+	
 	
 	
 	
@@ -234,6 +238,12 @@ public class Investigador implements Serializable{
 	}
 	public void setPropiedades(List<PropiedadIntelectual> propiedades) {
 		this.propiedades = propiedades;
+	}
+	public List<ActividadSanitaria> getSanitarias() {
+		return sanitarias;
+	}
+	public void setSanitarias(List<ActividadSanitaria> sanitarias) {
+		this.sanitarias = sanitarias;
 	}
 	
 }
