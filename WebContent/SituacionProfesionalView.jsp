@@ -136,7 +136,7 @@
           <div class="form-group col-md-4">
               <label for="inputState">Tipo de entidad</label>
               <select name="tipoEntidad" class="form-control">
-                <option value="0" selected>Elija</option>
+                <option value="${spEdit.entidadEmpleadora }" selected>${spEdit.entidadEmpleadora }</option>
                 <option value="Agencia Estatal">Agencia Estatal</option>
                 <option value="Asociaciones y Agrupaciones">Asociaciones y Agrupaciones</option>
                 <option value="Centro de I+D">Centro de I+D</option>
@@ -174,7 +174,7 @@
                 <label for="inputState">Modalidad de contrato
                   </label>
                 <select name="modalidadContrato" class="form-control">
-                  <option value="0" selected>Elija</option>
+                  <option value="${spEdit.modalidadContrato }" selected>${spEdit.modalidadContrato }</option>
                   <option value="Becario/a (pre o posdoctoral, otros)">Becario/a (pre o posdoctoral, otros)</option>
                   <option value="Contrato laboral indefinido">Contrato laboral indefinido</option>
                   <option value="Contrato laboral temporal">Contrato laboral temporal</option>
@@ -211,9 +211,9 @@
                 <div class="form-group col-md-8">
                           <label for="inputMovil1">Régimen de dedicación</label>
                           <select name="dedicacion" class="form-control">                        
-                            <option value="0" selected>Elija</option>
-                            <option value="1">Tiempo completo</option>
-                            <option value="2">Tiempo parcial</option>
+                            <option value="${spEdit.dedicacion }" selected>${spEdit.dedicacion }</option>
+                            <option value="Tiempo completo">Tiempo completo</option>
+                            <option value="Tiempo parcial">Tiempo parcial</option>
                           </select>
                        </div>
                 <div class="form-group col-md-8">
