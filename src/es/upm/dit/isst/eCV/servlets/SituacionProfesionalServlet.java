@@ -156,7 +156,6 @@ public class SituacionProfesionalServlet extends HttpServlet{
 		sp.setFunciones(funciones);
 		sp.setInvestigador(investigador);
 		sp.setModalidadContrato(modalidadContrato);
-		sp.setModalidadContrato(dedicacion);
 		sp.setTipoEntidad(tipoEntidad);
 		
 		
@@ -248,7 +247,6 @@ Investigador investigador = (Investigador) req.getSession().getAttribute("invest
 		sp.setFunciones(funciones);
 		sp.setInvestigador(investigador);
 		sp.setModalidadContrato(modalidadContrato);
-		sp.setModalidadContrato(dedicacion);
 		sp.setTipoEntidad(tipoEntidad);
 		
 		

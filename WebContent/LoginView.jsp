@@ -33,9 +33,7 @@
       <input type="password" name="password" class="form-control" placeholder="Introduzca su contraseña" required>
       
       <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Recordarme
-        </label>
+        <a href="SignUpServlet"> Registrarse</a>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Acceder</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>

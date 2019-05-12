@@ -54,7 +54,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
 
-        <li><a href="#">Descargar CVN</a></li>
+        <li><a href="DescargarCVServlet">Descargar CVN</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="InvestigadorDatosServlet"><span class="glyphicon glyphicon-user"></span> ${investigador.name }</a></li>
@@ -193,7 +193,7 @@
 
                                         <div class="form-group col-md-4">
                                             <label for="inputDate">Cuantia total (Euros)</label>
-                                            <input type="date" class="form-control" name="cuantia" value="${proyectoEdit.cuantia }" id="inputPassword4" >
+                                            <input type="text" class="form-control" name="cuantia" value="${proyectoEdit.cuantia }" id="inputPassword4" >
                                           </div>
                                           
                                         </div>

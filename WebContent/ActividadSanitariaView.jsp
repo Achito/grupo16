@@ -53,8 +53,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">Descargar CVN</a></li>
-      </ul>
+	<li><a href="DescargarCVServlet">Descargar CVN</a></li>      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="InvestigadorDatosServlet"><span class="glyphicon glyphicon-user"></span> ${investigador.name }</a></li>
         <li><a href="LogoutServlet"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
