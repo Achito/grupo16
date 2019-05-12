@@ -52,8 +52,6 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Editar CVN</a></li>
-        <li><a href="#">Importar CVN</a></li>
         <li><a href="#">Descargar CVN</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -139,22 +137,22 @@
               <label for="inputState">Tipo de entidad</label>
               <select name="tipoEntidad" class="form-control">
                 <option value="0" selected>Elija</option>
-                <option value="1">Agencia Estatal</option>
-                <option value="2">Asociaciones y Agrupaciones</option>
-                <option value="3">Centro de I+D</option>
-                <option value="4">Centro Tecnológico</option>
-                <option value="5">Centro de Inovación y Tecnología</option>
-                <option value="6">Centros y Estructuras Universitarios y Asimilados</option>
-                <option value="7">CIBER</option>
-                <option value="8">Departamento Universitario</option>
-                <option value="9">Entidad Empresarial</option>
-                <option value="10">Entidad Gestora del Sistema Nacional de Salud</option>
-                <option value="11">Fundación</option>
-                <option value="12">Instituciones Sanitarias</option>
-                <option value="13">Instituto  Universitario de Investigación</option>
-                <option value="14" >Organismo Público de Investigación</option>
-                <option value="15">Organismo, Otros</option>
-                <option value="16">Universidad</option>
+                <option value="Agencia Estatal">Agencia Estatal</option>
+                <option value="Asociaciones y Agrupaciones">Asociaciones y Agrupaciones</option>
+                <option value="Centro de I+D">Centro de I+D</option>
+                <option value="Centro Tecnológico">Centro Tecnológico</option>
+                <option value="Centro de Inovación y Tecnología">Centro de Inovación y Tecnología</option>
+                <option value="Centros y Estructuras Universitarios y Asimilados">Centros y Estructuras Universitarios y Asimilados</option>
+                <option value="CIBER">CIBER</option>
+                <option value="Departamento Universitario">Departamento Universitario</option>
+                <option value="Entidad Empresarial">Entidad Empresarial</option>
+                <option value="Entidad Gestora del Sistema Nacional de Salud">Entidad Gestora del Sistema Nacional de Salud</option>
+                <option value="Fundación">Fundación</option>
+                <option value="Instituciones Sanitarias">Instituciones Sanitarias</option>
+                <option value="Instituto  Universitario de Investigación">Instituto  Universitario de Investigación</option>
+                <option value="Organismo Público de Investigación" >Organismo Público de Investigación</option>
+                <option value="Organismo, Otros">Organismo, Otros</option>
+                <option value="Universidad">Universidad</option>
               </select>
             </div>
         </div>

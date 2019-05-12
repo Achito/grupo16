@@ -15,7 +15,7 @@ import org.apache.shiro.subject.Subject;
 import es.upm.dit.isst.eCV.dao.InvestigadorDAO;
 import es.upm.dit.isst.eCV.dao.InvestigadorDAOImplementation;;
 
-@WebServlet({ "/LoginServlet" })
+@WebServlet({ "/LoginServlet","" })
 public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
