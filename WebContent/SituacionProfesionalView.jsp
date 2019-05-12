@@ -129,7 +129,7 @@
     </table>
     
     
-    <form method="post" action="/SituacionProfesionalServlet">
+    <form method="post" action="SituacionProfesionalServlet">
         <div class="form-row">
           <div class="form-group col-md-8">
             <label for="inputEmail4">Entidad empleadora</label>
